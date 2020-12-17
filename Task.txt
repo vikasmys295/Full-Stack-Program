@@ -1,0 +1,114 @@
+1) Copy by Value Vs Copy By Reference 
+
+primitives datatypes are Copy by Value and Objects are Copy by Reference.
+
+Primitives are null,undefined,number,String,boolean;
+objects are Object,Array,Function.
+
+Primitives:
+
+var a = 5;
+var b = a;
+a = 10;
+console.log(a); // 10
+console.log(b); // 5
+This is also true for string, boolean, null, undefined
+When we assign primitives to the variable, we copy the value.
+
+Objects:
+var a = [];
+var b = a;
+a.push(1);
+console.log(a); // [1]
+console.log(b); // [1]
+console.log(a === b); // true
+When we assign Objects (non-primitives) to the variable, we copy them by reference.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2) HTTP1.1 vs HTTP2
+
+Internet Engineering Task Force (IETF) release HTTP/2, the second major version of the most useful internet protocol, HTTP.
+
+Main goals of developing HTTP/2 was:
+Protocol negotiation mechanism — protocol electing, eg. HTTP/1.1, HTTP/2 or other.
+High-level compatibility with HTTP/1.1 — methods, status codes, URIs and header fields.
+Page load speed improvements trough:
+Compression of request headers:
+Binary protocol
+HTTP/2 Server Push
+Request multiplexing over a single TCP connection
+Request pipelining
+HOL blocking (Head-of-line) — Package blocking
+
+Request multiplexing:
+HTTP/2 can send multiple requests for data in parallel over a single TCP connection. This is the most advanced feature of the HTTP/2 protocol 
+because it allows you to download web files asynchronously from one server.
+
+Header compression:
+HTTP/2 compress a large number of redundant header frames. It uses the HPACK specification as a simple and secure approach to header compression. 
+Both client and server maintain a list of headers used in previous client-server requests.
+
+Binary protocol:
+The latest HTTP version has evolved significantly in terms of capabilities and attributes such as transforming from a text protocol to a binary protocol. 
+HTTP1.x used to process text commands to complete request-response cycles. HTTP/2 will use binary commands (in 1s and 0s) to execute the same tasks. 
+This attribute eases complications with framing and simplifies implementation of commands that were confusingly intermixed due to commands containing text and optional spaces.
+Browsers using HTTP/2 implementation will convert the same text commands into binary before transmitting it over the network.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3) How do we copy by value in a composite data type
+
+One of the ways of copying the composite data type by value is achieved with the help of spread operator (…).
+
+let array1=[2,4,6,8,10];
+Console.log("original Array",array1);
+let array2=[...array1];
+array1[0]=0;
+let array3 = array1;
+Console.log("After Updating Original Array",array1);
+Console.log("Copy by Value using spread Operator",array2);
+Console.log("Copy by reference ",array3);
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+4) Write a function called “printAllValues” which returns an newArray of all the input object’s values.
+Input (Object):
+var object = {name: “RajiniKanth”, age: 33, hasPets : false};
+Output:
+[“RajiniKanth”, 33, false]
+
+var obj ={name:"RajiniKanth",age:33,hasPets:false}
+
+function printAllValues(obj){
+    var arr = [];
+    for(var key in obj ){
+        arr.push(obj[key])
+    }
+    return console.log(arr);
+}
+
+printAllValues(obj);
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+5)Write a function called “printAllKeys” which returns an newArray of all the input object’s keys.
+Example Input:
+{name : ‘RajiniKanth’, age : 25, hasPets : true}
+Example Output:
+[‘name’, ‘age’, ‘hasPets’]
+
+var obj ={name:"RajiniKanth",age:33,hasPets:false}
+
+function printAllKeys(obj) {
+ return console.log(Object.keys(obj))
+}
+
+printAllkeys(obj);
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+6) Parsing an JSON object and convert it to a list:
+Write a function called “convertObjectToList” which converts an object literal into an array of arrays.
+Input (Object):
+var obj = {name: “ISRO”, age: 35, role: “Scientist”};
+Output:
+[[“name”, “ISRO”], [“age”, 35], [“role”, “Scientist”]]
+
+function convertObjectToList(obj){
+return console.log(Object.entries(obj));
+}
+convertObjectToList(obj);
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
